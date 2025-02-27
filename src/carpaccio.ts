@@ -16,7 +16,7 @@ export function applyDiscount(price: number) {
 	if (price >= 7000 && price < 10000) {
 		return price * 0.93
 	}
-	if (price >= 10000) {
+	if (price >= 10000 && price < 50000) {
 		return price * 0.9
 	}
 	if (price >= 50000) {

@@ -15,6 +15,9 @@ test("Application des réductions", () => {
 	expect(applyDiscount(999)).toBe(999) // Pas de réduction
 	expect(applyDiscount(1000)).toBe(970) // 3% de réduction
 	expect(applyDiscount(5000)).toBe(4750) // 5% de réduction
+	expect(applyDiscount(7000)).toBe(6510) // 7% de réduction
+	expect(applyDiscount(10000)).toBe(9000) // 10% de réduction
+	expect(applyDiscount(50000)).toBe(42500) // 15% de réduction
 })
 
 test("Gestion des taxes", () => {
