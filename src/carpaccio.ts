@@ -6,11 +6,21 @@ const TAX_RATES = {
 	NV: 0.0685, // Nevada
 }
 
-export function applyDiscount(price: number, quantity: number) {
-	if (quantity >= 50) {
-		return price * 0.9 // 10% de réduction
-	} else if (quantity >= 10) {
-		return price * 0.95 // 5% de réduction
+export function applyDiscount(price: number) {
+	if (price >= 1000 && price < 5000) {
+		return price * 0.97
+	}
+	if (price >= 5000 < 7000) {
+		return price * 0.95
+	}
+	if (price >= 7000 < 10000) {
+		return price * 0.93
+	}
+	if (price >= 10000) {
+		return price * 0.9
+	}
+	if (price >= 50000) {
+		return price * 0.85
 	}
 	return price
 }
