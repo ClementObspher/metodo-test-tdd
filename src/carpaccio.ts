@@ -25,12 +25,17 @@ export function applyDiscount(price: number) {
 	return price
 }
 
-export function calculateTtcPrice(unitPrice: number, state: keyof typeof TAX_RATES) {
+export function calculateTtcPrice(unitPrice: number, quantity: number, state: keyof typeof TAX_RATES) {
 	if (!TAX_RATES.hasOwnProperty(state)) {
 		throw new Error("État non pris en charge")
 	}
 
-	let discountedPrice = applyDiscount(unitPrice)
+	if (unitPrice < 0 || quantity < 0) {
+		throw new Error("Les valeurs négatives ne sont pas autorisées")
+	}
+
+	let totalPrice = unitPrice * quantity
+	let discountedPrice = applyDiscount(totalPrice)
 	let taxRate = TAX_RATES[state]
 
 	return Math.round(discountedPrice * (1 + taxRate) * 100) / 100
@@ -38,6 +43,7 @@ export function calculateTtcPrice(unitPrice: number, state: keyof typeof TAX_RAT
 
 // Exemple d'utilisation
 const unitPrice = 100 // Prix unitaire en dollars
+const quantity = 20 // Nombre d'articles
 const state = "CA" // État de livraison
 
-console.log(`Prix TTC: ${calculateTtcPrice(unitPrice, state)}`)
+console.log(`Prix TTC: ${calculateTtcPrice(unitPrice, quantity, state)}`)
