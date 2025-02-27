@@ -1,7 +1,12 @@
 import { test, expect } from "bun:test"
-import { calculateTtcPrice, applyDiscount } from "../src/carpaccio"
+import { calculateTtcPrice, applyDiscount, calculateHtcPrice } from "../src/carpaccio"
 
-test("Calcul du prix brut", () => {
+test("Calcul du prix HT", () => {
+	expect(calculateHtcPrice(100, 10)).toBeCloseTo(970, 2)
+	expect(calculateHtcPrice(700, 5)).toBeCloseTo(3395, 2)
+})
+
+test("Calcul du prix TTC", () => {
 	expect(calculateTtcPrice(100, 10, "CA")).toBeCloseTo(1050.03, 2)
 	expect(calculateTtcPrice(200, 5, "TX")).toBeCloseTo(1030.63, 2)
 })

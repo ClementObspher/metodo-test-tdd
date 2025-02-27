@@ -25,6 +25,17 @@ export function applyDiscount(price: number) {
 	return price
 }
 
+export function calculateHtcPrice(unitPrice: number, quantity: number) {
+	if (unitPrice < 0 || quantity < 0) {
+		throw new Error("Les valeurs négatives ne sont pas autorisées")
+	}
+
+	let totalPrice = unitPrice * quantity
+	let discountedPrice = applyDiscount(totalPrice)
+
+	return Math.round(discountedPrice * 100) / 100
+}
+
 export function calculateTtcPrice(unitPrice: number, quantity: number, state: string) {
 	if (!TAX_RATES.hasOwnProperty(state)) {
 		throw new Error("État non pris en charge")
