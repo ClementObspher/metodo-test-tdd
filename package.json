@@ -1,14 +1,18 @@
 {
-  "name": "metodo-test-tdd",
+  "name": "app",
   "version": "1.0.50",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "bun test",
+    "test:coverage": "bun test --coverage",
     "dev": "bun run --watch src/index.ts"
   },
   "dependencies": {
-    "elysia": "latest"
+    "@elysiajs/eden": "^1.2.0",
+    "@elysiajs/swagger": "^1.2.0",
+    "elysia": "^1.2.10"
   },
   "devDependencies": {
+    "@types/bun": "^1.1.16",
     "bun-types": "latest"
   },
   "module": "src/index.js"
