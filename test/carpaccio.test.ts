@@ -23,6 +23,9 @@ test("Application des réductions", () => {
 test("Gestion des taxes", () => {
 	expect(calculateTtcPrice(100, 20, "UT")).toBeCloseTo(2072.89, 2)
 	expect(calculateTtcPrice(50, 100, "CA")).toBeCloseTo(5141.88, 2)
+	expect(calculateTtcPrice(100, 10, "NV")).toBeCloseTo(1047.6, 2)
+	expect(calculateTtcPrice(200, 5, "AL")).toBeCloseTo(973.88, 2)
+	expect(calculateTtcPrice(100, 10, "TX")).toBeCloseTo(1030.63, 2)
 })
 
 test("État non pris en charge", () => {

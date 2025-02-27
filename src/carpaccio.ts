@@ -41,15 +41,9 @@ export function calculateTtcPrice(unitPrice: number, quantity: number, state: st
 		throw new Error("État non pris en charge")
 	}
 
-	if (unitPrice < 0 || quantity < 0) {
-		throw new Error("Les valeurs négatives ne sont pas autorisées")
-	}
-
-	let totalPrice = unitPrice * quantity
-	let discountedPrice = applyDiscount(totalPrice)
 	let taxRate = TAX_RATES[state as keyof typeof TAX_RATES]
 
-	return Math.round(discountedPrice * (1 + taxRate) * 100) / 100
+	return Math.round(calculateHtcPrice(unitPrice, quantity) * (1 + taxRate) * 100) / 100
 }
 
 // Exemple d'utilisation
