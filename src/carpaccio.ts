@@ -25,7 +25,7 @@ export function applyDiscount(price: number) {
 	return price
 }
 
-export function calculateTtcPrice(unitPrice: number, quantity: number, state: keyof typeof TAX_RATES) {
+export function calculateTtcPrice(unitPrice: number, quantity: number, state: string) {
 	if (!TAX_RATES.hasOwnProperty(state)) {
 		throw new Error("État non pris en charge")
 	}
@@ -36,7 +36,7 @@ export function calculateTtcPrice(unitPrice: number, quantity: number, state: ke
 
 	let totalPrice = unitPrice * quantity
 	let discountedPrice = applyDiscount(totalPrice)
-	let taxRate = TAX_RATES[state]
+	let taxRate = TAX_RATES[state as keyof typeof TAX_RATES]
 
 	return Math.round(discountedPrice * (1 + taxRate) * 100) / 100
 }

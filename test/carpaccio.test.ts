@@ -8,8 +8,8 @@ test("Calcul du prix brut", () => {
 
 test("Application des réductions", () => {
 	expect(applyDiscount(999)).toBe(999) // Pas de réduction
-	expect(applyDiscount(1000)).toBe(970) // 5% de réduction
-	expect(applyDiscount(5000)).toBe(4750) // 10% de réduction
+	expect(applyDiscount(1000)).toBe(970) // 3% de réduction
+	expect(applyDiscount(5000)).toBe(4750) // 5% de réduction
 })
 
 test("Gestion des taxes", () => {
@@ -18,7 +18,7 @@ test("Gestion des taxes", () => {
 })
 
 test("État non pris en charge", () => {
-	expect(() => calculateTtcPrice(100, "FF")).toThrow("État non pris en charge")
+	expect(() => calculateTtcPrice(100, 10, "FF")).toThrow("État non pris en charge")
 })
 
 test("Valeurs négatives interdites", () => {
